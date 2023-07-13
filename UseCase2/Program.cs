@@ -15,8 +15,8 @@ builder.Services.AddScoped(serviceProvider =>
   new BalanceTransactionService(serviceProvider.GetRequiredService<IStripeClient>()));
 
 var app = builder.Build();
-
 app.UseMiddleware<ErrorHandlingMiddleware>();
+
 app.MapGet("/balance",
   async ([FromServices] BalanceService balanceService) =>
   {
